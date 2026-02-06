@@ -62,6 +62,33 @@
   .animate-down{
     animation: fadeSlideDown 1s ease forwards;
   }
+  @keyframes fadeWave {
+    0%{
+      opacity: 0;
+      /* transform: translateY(40px); */
+      transform: translateX(20px);
+    }
+    50%{
+      opacity: 1;
+      /* transform: translateY(-40px); */
+      transform: translateX(-20px);
+    }
+    75%{
+      opacity: 0;
+      /* transform: translateY(40px); */
+      transform: translateX(20px);
+    }
+    50%{
+      opacity: 1;
+      /* transform: translateY(-40px); */
+      transform: translateX(-20px);
+    }
+
+
+  }
+  .animate-up{
+    animation: fadeWave 1s ease backwards;
+  }
 
 
   /* Words animation */

@@ -36,28 +36,28 @@ function LandingPage() {
           <div className='bg-[#fff8e7] flex flex-col rounded-2xl w-200 p-5 border-2 border-[#e450b3]'>
             <h2 className='text-2xl p-2 border-b-2 border-[#eea2a2]  text-center  font-bold  font-[Great_Vibes] '>Now Its time for surprise✨</h2>
 
-            <div className='grid grid-cols-3 p-20 gap-8'>
+            <div className='grid grid-cols-3 p-20 gap-8 animate-up '>
               <button onClick={() => {
                 setDay("Propose")
-              }} style={{ fontFamily: 'Lato' }} className='px-10 py-2 cursor-pointer shiny-btn bg-black  hover:transform hover:-translate-y-1  rounded-md shadow-lg text-white   transition-all duration-100 ease-in hover:bg-pink-600 hover:text-white' > Propose Day</button>
+              }} style={{ fontFamily: 'Lato' }} className='border-2 border-gray-200 px-10 py-2 cursor-pointer shiny-btn bg-black  hover:transform hover:-translate-y-1  rounded-md shadow-lg text-white   transition-all duration-100 ease-in hover:bg-pink-600 hover:text-white' > Propose Day</button>
               <button onClick={() => {
                 setDay("Choclate")
-              }} style={{ fontFamily: 'Lato' }} className='px-10 py-2 cursor-pointer shiny-btn bg-black  hover:transform hover:-translate-y-1  rounded-md shadow-lg text-white   transition-all duration-100 ease-in hover:bg-pink-600 hover:text-white' > Choclate Day</button>
+              }} style={{ fontFamily: 'Lato' }} className='border-2 border-gray-200 px-10 py-2 cursor-pointer shiny-btn bg-black  hover:transform hover:-translate-y-1  rounded-md shadow-lg text-white   transition-all duration-100 ease-in hover:bg-pink-600 hover:text-white' > Choclate Day</button>
               <button onClick={() => {
                 setDay("Teddy")
-              }} style={{ fontFamily: 'Lato' }} className='px-10 py-5 cursor-pointer shiny-btn bg-black  hover:transform hover:-translate-y-1  rounded-md shadow-lg text-white   transition-all duration-100 ease-in hover:bg-pink-600 hover:text-white' > Teddy Day</button>
+              }} style={{ fontFamily: 'Lato' }} className='border-2 border-gray-200 px-10 py-5 cursor-pointer shiny-btn bg-black  hover:transform hover:-translate-y-1  rounded-md shadow-lg text-white   transition-all duration-100 ease-in hover:bg-pink-600 hover:text-white' > Teddy Day</button>
               <button onClick={() => {
                 setDay("Promise")
-              }} style={{ fontFamily: 'Lato' }} className='px-10 py-5 cursor-pointer shiny-btn bg-black  hover:transform hover:-translate-y-1  rounded-md shadow-lg text-white   transition-all duration-100 ease-in hover:bg-pink-600 hover:text-white' >Promise Day </button>
+              }} style={{ fontFamily: 'Lato' }} className='border-2 border-gray-200 px-10 py-5 cursor-pointer shiny-btn bg-black  hover:transform hover:-translate-y-1  rounded-md shadow-lg text-white   transition-all duration-100 ease-in hover:bg-pink-600 hover:text-white' >Promise Day </button>
               <button onClick={() => {
                 setDay("Hug")
-              }} style={{ fontFamily: 'Lato' }} className='px-10 py-5 cursor-pointer shiny-btn bg-black  hover:transform hover:-translate-y-1  rounded-md shadow-lg text-white   transition-all duration-100 ease-in hover:bg-pink-600 hover:text-white' > Hug Day</button>
+              }} style={{ fontFamily: 'Lato' }} className='border-2 border-gray-200 px-10 py-5 cursor-pointer shiny-btn bg-black  hover:transform hover:-translate-y-1  rounded-md shadow-lg text-white   transition-all duration-100 ease-in hover:bg-pink-600 hover:text-white' > Hug Day</button>
               <button onClick={() => {
                 setDay("Kiss")
-              }} style={{ fontFamily: 'Lato' }} className='px-10 py-5 cursor-pointer shiny-btn bg-black  hover:transform hover:-translate-y-1  rounded-md shadow-lg text-white   transition-all duration-100 ease-in hover:bg-pink-600 hover:text-white' > Kiss Day</button>
+              }} style={{ fontFamily: 'Lato' }} className='border-2 border-gray-200 px-10 py-5 cursor-pointer shiny-btn bg-black  hover:transform hover:-translate-y-1  rounded-md shadow-lg text-white   transition-all duration-100 ease-in hover:bg-pink-600 hover:text-white' > Kiss Day</button>
               <button onClick={() => {
                 setDay("Valentine")
-              }} style={{ fontFamily: 'Lato' }} className='px-10 py-5 cursor-pointer shiny-btn bg-black  hover:transform hover:-translate-y-1  rounded-md shadow-lg text-white   transition-all duration-100 ease-in hover:bg-pink-600 hover:text-white col-span-3' > Valentine's Day </button>
+              }} style={{ fontFamily: 'Lato' }} className='border-2 border-gray-200 px-10 py-5 cursor-pointer shiny-btn bg-black  hover:transform hover:-translate-y-1  rounded-md shadow-lg text-white   transition-all duration-100 ease-in hover:bg-pink-600 hover:text-white col-span-3' > Valentine's Day </button>
             </div>
           </div>
         </div>
