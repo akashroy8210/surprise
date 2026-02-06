@@ -1,28 +1,231 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from "react";
 import letterHug from "../../assets/image/letterHug.png";
-import littleBaby from "../../assets/littleBaby.mp3";
+import musicFile from "../../assets/littleBaby.mp3";
+
+function Hug(){
+
+const [intro,setIntro] = useState(true);
+const [zoom,setZoom] = useState(false);
+const [reveal,setReveal] = useState(false);
+
+const audioRef = useRef(null);
 
 
-function Hug() {
+// Film intro disappears
+useEffect(()=>{
 
-    const [open, setOpen] = useState(false);
+setTimeout(()=>{
+  setIntro(false);
+},2200);
 
-    useEffect(() => {
-        setOpen(true); // auto play animation
-    }, []);
-    return (
-        <div className='bg-linear-to-t from-[#eea7cb] to-pink-200 h-screen flex flex-col relative bg-cover items-center justify-center'>
-            <h1 className='text-3xl font-bold fixed top-20'>For You Baby (-ve♥️)💕</h1>
-            <div className='bg-[#fff8e7] flex flex-col rounded-2xl w-200 p-5 border-2 border-[#e450b3]'>
-                <div className='flex gap-10  flex-col items-center justify-center '>
-                    {/* <h2 className='text-3xl font-bold capitalize text-pink-500'>click on envelop to see surprise✨</h2> */}
-                    <audio src={littleBaby} autoPlay></audio>
-                   <img src={letterHug} alt="" className={` h-120 origin-bottom transform transition-all duration-700 ease-in-out ${open
-      ? "rotate-0 scale-100 opacity-100" : "rotate-90 scale-75 opacity-0"} `}/>
-                </div>
-            </div>
-        </div>
-    )
+},[]);
+
+
+// Play soft music
+const playMusic = ()=>{
+
+if(!audioRef.current) return;
+
+audioRef.current.volume = 0;
+
+audioRef.current.play();
+
+let vol = 0;
+
+const fade = setInterval(()=>{
+
+ if(vol < 0.35){
+   vol += 0.02;
+   audioRef.current.volume = vol;
+ }else{
+   clearInterval(fade);
+ }
+
+},200);
+
+};
+
+
+// CLICK LETTER (shared transition illusion)
+
+const openHug = ()=>{
+
+playMusic();
+setZoom(true);
+
+setTimeout(()=>{
+setReveal(true);
+},900);
+
+};
+
+
+
+const particles = Array.from({length:18});
+
+return(
+
+<div className="
+relative h-screen
+flex items-center justify-center
+overflow-hidden
+bg-[#FFF1F5]
+">
+
+<audio ref={audioRef} src={musicFile} loop />
+
+{/* PARALLAX LIGHT */}
+<div className="
+absolute
+w-225
+h-225
+bg-[#FFD6E0]
+rounded-full
+blur-[160px]
+opacity-60
+animate-glow
+"/>
+
+<div className="
+absolute
+w-150
+h-150
+bg-pink-200
+rounded-full
+blur-[140px]
+opacity-50
+top-[20%]
+left-[60%]
+animate-glow
+"/>
+
+
+
+{/* FLOATING WARM PARTICLES */}
+{
+particles.map((_,i)=>(
+<span
+key={i}
+className="absolute text-pink-300 animate-particle"
+style={{
+left:`${Math.random()*100}%`,
+fontSize:`${10+Math.random()*14}px`,
+animationDuration:`${7+Math.random()*6}s`
+}}
+>
+✨
+</span>
+))
 }
 
-export default Hug
+
+
+{/* FILM INTRO */}
+
+{
+intro && (
+
+<div className="
+absolute inset-0
+bg-black
+flex items-center justify-center
+text-white
+text-4xl
+font-serif
+animate-film
+z-50
+">
+For a moment that feels like a hug...
+</div>
+
+)
+}
+
+
+
+{/* LETTER */}
+
+{
+!reveal && !intro && (
+
+<img
+src={letterHug}
+onClick={openHug}
+className={`
+w-105
+cursor-pointer
+transition
+duration-700
+hover:scale-105
+${zoom ? "animate-zoom" : ""}
+`}
+/>
+
+)
+}
+
+
+
+{/* HUG REVEAL */}
+
+{
+reveal && (
+
+<div className="
+text-center
+animate-film
+max-w-2xl
+px-6
+">
+
+<h1 className="
+text-6xl
+font-serif
+text-[#402B2B]
+mb-6
+">
+A Hug For You 🤍
+</h1>
+
+<p className="
+text-lg
+leading-relaxed
+text-[#5C4444]
+">
+Not every hug is made with arms.  
+Some are made with presence, patience,  
+and the quiet promise that you are never alone.
+
+If this moment could wrap around you —  
+consider it a gentle hug.
+</p>
+
+
+<button className="
+mt-10
+px-10 py-4
+rounded-full
+bg-inear-to-r
+from-pink-300
+to-rose-300
+text-[#402B2B]
+font-semibold
+transition
+duration-500
+hover:scale-110
+hover:shadow-[0_20px_60px_rgba(255,143,177,.5)]
+active:scale-95
+">
+Feel the Hug 💞
+</button>
+
+</div>
+
+)
+}
+
+</div>
+);
+}
+
+export default Hug;

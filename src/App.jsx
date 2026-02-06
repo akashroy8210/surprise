@@ -5,16 +5,25 @@ import './App.css'
 import LandingPage from './component/Landing Page/LandingPage'
 import FloatingHearts from './component/FloatingHeart'
 import Happy from './component/Landing Page/Happy'
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Teddy,Choclate,Love,Promise,Valentine } from './component/cards'
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-    <FloatingHearts/>
-      <LandingPage/>
-      {/* <Happy/> */}
-    </>
+    <BrowserRouter>
+      <Routes>
+
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/teddy" element={<Promise />} />
+        <Route path="/teddy" element={<Valentine />} />
+
+
+        <Route path="/teddy" element={<Teddy />} />
+        <Route path="/chocolate" element={<Choclate />} />
+        <Route path="/love" element={<Love />} />
+
+      </Routes>
+    </BrowserRouter>
   )
 }
 

@@ -28,7 +28,7 @@ function Happy() {
         </div>
         <button onClick={()=>{
           setBack("better")
-        }} className='px-10 py-3 cursor-pointer bg-[#ffccd5] rounded-full shadow-lg text-[#590d22] font-bold'>Yeah Now Better</button>
+        }} className='px-10 py-3 cursor-pointer bg-[#ffccd5] rounded-full shadow-lg text-[#590d22] font-bold'>Yes i will be your Valentine 🙈</button>
       </div>
     </div>
   )
