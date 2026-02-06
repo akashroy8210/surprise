@@ -11,6 +11,7 @@ const [day, setDay] = useState()
 
 // ✅ Valentine Unlock Logic (ADDED)
 const valentineWeek = {
+  Rose: 7,
   Propose: 8,
   Choclate: 9,
   Teddy: 10,
@@ -43,7 +44,7 @@ else if (day == "Propose") return <Propose />
 else if (day === "Valentine") return <Valentine />
 else if (day === "Choclate") return <Choclate />
 else if (day === "Kiss") return <Kiss />
-
+else if(day==="Rose") return <Rose/>
 if (mood === "bad") {
 return <Happy />;
 }
