@@ -1,4 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, { useState, useEffect, useRef } from "react";
+
+import music from "../../assets/music/music.mp3"; // ✅ FIXED MUSIC PATH
 
 function Love(){
 
@@ -40,6 +42,16 @@ setTimeout(()=>heart.remove(),1000);
 }
 
 };
+const audioRef = useRef(null);
+const toggleMusic = () => {
+    if (!audioRef.current) return;
+
+    if (audioRef.current.paused) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  };
 
 return(
 
@@ -53,7 +65,14 @@ via-rose-200
 to-pink-300
 ">
 
+<audio ref={audioRef} src={music} loop />
 
+      <button
+        onClick={toggleMusic}
+        className="absolute top-6 right-6 bg-[#5C3A2E] text-[#FFF8F0] px-4 py-2 rounded-full hover:scale-105 transition duration-300"
+      >
+        🎵 Music
+      </button>
 {/* FLOATING HEARTS */}
 {
 hearts.map((h,i)=>(

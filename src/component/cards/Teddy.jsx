@@ -5,7 +5,7 @@ function Teddy(){
 
 const navigate = useNavigate();
 const [spot,setSpot] = useState({x:0,y:0});
-
+  
 useEffect(()=>{
 const move = e=>{
 setSpot({x:e.clientX,y:e.clientY});

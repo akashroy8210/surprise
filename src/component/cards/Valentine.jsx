@@ -1,6 +1,6 @@
 import React, { useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import loveSong from "../../assets/kanomebali.mp3";
+import loveSong from "../../assets/music/kanomebali.mp3";
 
 function Valentine(){
 

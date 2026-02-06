@@ -1,42 +1,53 @@
-import React from 'react'
-// import RoseFloating from '../RoseFloating'
-import firstTimeMovie from './image/firstTimeMovie.jpg'
-import firstTimeMovie2 from './image/firstTimeMovie2.jpg'
+import React, { useState, useEffect, useRef } from "react";
 
-import a from './image/a.jpg'
-import b from './image/b.jpg'
-import c from './image/c.jpg'
-import d from './image/d.jpg'
-import e from './image/e.jpg'
-import f from './image/f.jpg'
+// import RoseFloating from '../RoseFloating'
+import firstTimeMovie from '../../assets/image/firstTimeMovie.jpg'
+import firstTimeMovie2 from '../../assets/image/firstTimeMovie2.jpg'
+import baby1 from "../../assets/music/baby1.mp3"; // ✅ FIXED MUSIC PATH
+
+import a from '../../assets/image/a.jpg'
+import b from '../../assets/image/b.jpg'
+import c from '../../assets/image/c.jpg'
+import d from '../../assets/image/d.jpg'
+import e from '../../assets/image/e.jpg'
+import f from '../../assets/image/f.jpg'
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
 
 
 function Propose() {
 
   const [index, setIndex] = useState(0);
+    const audioRef = useRef(null);
+  const toggleMusic = () => {
+    if (!audioRef.current) return;
+
+    if (audioRef.current.paused) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  };
 
   const cards = [
     {
       img1: firstTimeMovie,
       img2: firstTimeMovie2,
-      text: "Our first time when we went for a movie."
+      text: "Our first time when we went for a movie. Without plan Next time we will plan."
     },
     {
       img1: a,
       img2: b,
-      text: "Beautiful memory together."
+      text: "Beautiful memory together. Kitna pyare lag rahe hai na jaise hum dono ka abhi abhi  hi sadi hua hia"
     },
     {
       img1: c,
       img2: d,
-      text: "A special day."
+      text: "i am with my universe queen👑"
     },
     {
       img1: e,
       img2: f,
-      text: "One of my favorites ❤️"
+      text: "One of my favorites photo our favourite restaurent ❤️"
     }
   ];
 
@@ -49,6 +60,14 @@ function Propose() {
   if (isAccepted === "yes") {
     return (
       <div className='flex bg-pink-200 h-screen flex-col justify-center items-center'>
+        <audio ref={audioRef} src={baby1} loop />
+
+      <button
+        onClick={toggleMusic}
+        className="cursor-pointer absolute top-6 right-6 bg-[#5C3A2E] text-[#FFF8F0] px-4 py-2 rounded-full hover:scale-105 transition duration-300"
+      >
+        🎵 Music
+      </button>
         <AnimatePresence mode="wait">
 
           <motion.div
@@ -79,6 +98,7 @@ function Propose() {
 
             className="bg-[#f2f2f2] p-4 flex flex-col gap-5 shadow-lg relative rounded-2xl border-4 border-pink-500 w-120 h-160"
           >
+            
             <img src={cards[index].img1} className=" rounded-2xl shadow-xl" />
             <img src={cards[index].img2} className=" rounded-2xl shadow-xl" />
 
@@ -101,10 +121,18 @@ function Propose() {
     )
   }
   const text="Babu i love you so much i cant even imagine a nanosecond without you baby i know you are thinking that i hurt you but you know baby that i dont hurt you intentionally we will talk on it for now i love you baby.";
+  
   return (
     <div className='bg-linear-to-t from-[#eea7cb] to-pink-200 h-screen flex flex-col  relative bg-cover items-center justify-center'>
       <h1 className='text-1xl font-bold fixed top-20 flex justify-center items-center bg-[#f2f2f2] border-2 shadow-2xl border-white px-5 py-3 rounded-full text-[#590d22] mb-10'>Happy Propose Day (-ve)💕</h1>
+<audio ref={audioRef} src={baby1} loop />
 
+      <button
+        onClick={toggleMusic}
+        className="cursor-pointer absolute top-6 right-6 bg-[#5C3A2E] text-[#FFF8F0] px-4 py-2 rounded-full hover:scale-105 transition duration-300"
+      >
+        🎵 Music
+      </button>
       <div className=' flex flex-col rounded-2xl w-200 p-5'>
         <h2 className='text-8xl text-center opacity-0 animate-down' style={{ fontFamily: 'Playfair Display' }} >
           I Love You

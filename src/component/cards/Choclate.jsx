@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import chocolate from './image/choclate.svg'
+import chocolate from "../../assets/image/choclate.svg"; // ✅ FIXED IMAGE PATH
+import music from "../../assets/music/music.mp3"; // ✅ FIXED MUSIC PATH
 
 function Choclate() {
 
@@ -45,9 +46,7 @@ function Choclate() {
       />
 
       {/* Music */}
-      <audio ref={audioRef} loop>
-        <source src="/music.mp3" type="audio/mpeg" />
-      </audio>
+      <audio ref={audioRef} src={music} loop />
 
       <button
         onClick={toggleMusic}
@@ -62,10 +61,12 @@ function Choclate() {
           onClick={() => setOpen(true)}
           className="cursor-pointer group"
         >
-          <div className="h-100 w-100  rounded-3xl flex flex-col items-center justify-center 
+          <div className="h-100 w-100 rounded-3xl flex flex-col items-center justify-center 
           transform transition duration-700 group-hover:scale-105 relative">
-            <img src={chocolate} alt=""  className="text-[#FFF8F0] -rotate-45 text-3xl font-['Playfair_Display'] tracking-wide"/>
-            <p className="absolute -bottom-6  right-6   text-white  font-bold text-2xl text-center p-2 animate-down">Tap to Open 🍫</p>
+            <img src={chocolate} alt="" className="text-[#FFF8F0] -rotate-45 text-3xl font-['Playfair_Display'] tracking-wide"/>
+            <p className="absolute -bottom-6 right-6 text-white font-bold text-2xl text-center p-2 animate-down">
+              Tap to Open 🍫
+            </p>
           </div>
         </div>
       )}

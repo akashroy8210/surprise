@@ -4,18 +4,20 @@ import ParticlesBg from "../ParticlesBg";
 import Slideshow from "../Slideshow";
 import MemoryCards from  '../MemoryCards'
 import { useRef, useState } from "react";
-import { FaPlay, FaPause } from "react-icons/fa";
 import Timeline from "../Timeline";
-
+import promise from "../../assets/music/promise.mp3";
 export default function Kiss() {
 
   const audioRef = useRef(null);
-  const [play, setPlay] = useState(false);
 
   const toggleMusic = () => {
-    if (play) audioRef.current.pause();
-    else audioRef.current.play();
-    setPlay(!play);
+    if (!audioRef.current) return;
+
+    if (audioRef.current.paused) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
   };
 
   return (
@@ -28,14 +30,15 @@ export default function Kiss() {
       <Slideshow />
 
       {/* Music Button */}
+      <audio ref={audioRef} src={promise}  loop />
+      
       <button
         onClick={toggleMusic}
-        className="fixed bottom-8 right-8 bg-white/10 backdrop-blur-lg p-4 rounded-full text-white"
+        className="absolute cursor-pointer top-6 right-6 bg-[#5C3A2E] text-[#FFF8F0] px-4 py-2 rounded-full hover:scale-105 transition duration-300"
       >
-        {play ? <FaPause /> : <FaPlay />}
+        🎵 Music
       </button>
 
-      <audio ref={audioRef} src="/music.mp3" loop />
 
     </div>
   );

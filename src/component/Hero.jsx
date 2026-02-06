@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import kiss from "../assets/kiss.jpg";
+import kiss from "../assets/image/kiss.jpg";
 
 export default function Hero() {
 

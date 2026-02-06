@@ -1,6 +1,6 @@
 import React, {useState, useRef} from "react";
-import paper from './image/paper.jpg';
-import promise from './music/promise.mp3';
+import paper from '../../assets/image/paper.jpg';
+import promise from '../../assets/music/promise.mp3';
 
 function Promise(){
 

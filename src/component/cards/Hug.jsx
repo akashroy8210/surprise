@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import letterHug from "../../assets/image/letterHug.png";
-import musicFile from "../../assets/littleBaby.mp3";
+import letterHug from "../../assets/image/letterHug.png"; // ✅ FIXED
+import musicFile from "../../assets/music/littleBaby.mp3"; // ✅ FIXED
 
 function Hug(){
 
