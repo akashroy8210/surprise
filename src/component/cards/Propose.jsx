@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import firstTimeMovie from '../../assets/image/firstTimeMovie.jpg'
 import firstTimeMovie2 from '../../assets/image/firstTimeMovie2.jpg'
 import baby1 from "../../assets/music/baby1.mp3"; // ✅ FIXED MUSIC PATH
-
+import { FaPlay, FaPause } from "react-icons/fa";
 import a from '../../assets/image/a.jpg'
 import b from '../../assets/image/b.jpg'
 import c from '../../assets/image/c.jpg'
@@ -19,8 +19,6 @@ function Propose() {
   const [index, setIndex] = useState(0);
     const audioRef = useRef(null);
   const toggleMusic = () => {
-    if (!audioRef.current) return;
-
     if (audioRef.current.paused) {
       audioRef.current.play();
     } else {
@@ -60,7 +58,7 @@ function Propose() {
   if (isAccepted === "yes") {
     return (
       <div className='flex bg-pink-200 h-screen flex-col justify-center items-center'>
-        <audio ref={audioRef} src={baby1} loop />
+        <audio ref={audioRef} src={baby1} loop  />
 
       <button
         onClick={toggleMusic}
@@ -125,7 +123,7 @@ function Propose() {
   return (
     <div className='bg-linear-to-t from-[#eea7cb] to-pink-200 h-screen flex flex-col  relative bg-cover items-center justify-center'>
       <h1 className='text-1xl font-bold fixed top-20 flex justify-center items-center bg-[#f2f2f2] border-2 shadow-2xl border-white px-5 py-3 rounded-full text-[#590d22] mb-10'>Happy Propose Day (-ve)💕</h1>
-<audio ref={audioRef} src={baby1} loop />
+<audio ref={audioRef} src={baby1} loop  />
 
       <button
         onClick={toggleMusic}
