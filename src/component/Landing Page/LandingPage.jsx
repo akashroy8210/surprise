@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Happy from "./Happy";
 import envelop from "../../assets/image/envelop.png";
-import { Choclate, Promise, Hug, Kiss, Propose, Valentine, Teddy } from '../cards/index'
+import { Choclate, Promise, Hug, Kiss, Propose, Valentine, Teddy,Rose} from '../cards/index'
 
 function LandingPage() {
 
@@ -65,7 +65,7 @@ Now Its time for surprise✨
 
 {/* ✅ BUTTON TEMPLATE APPLIED */}
 
-{["Propose","Choclate","Teddy","Promise","Hug","Kiss","Valentine"].map((d)=>{
+{["Rose","Propose","Choclate","Teddy","Promise","Hug","Kiss","Valentine"].map((d)=>{
 
 const unlocked = isUnlocked(d);
 
