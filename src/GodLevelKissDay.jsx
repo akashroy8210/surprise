@@ -1,11 +1,11 @@
-import FilmIntro from "../FilmIntro";
-import Hero from "../Hero";
-import ParticlesBg from "../ParticlesBg";
-import Slideshow from "../Slideshow";
-import MemoryCards from  '../MemoryCards'
+import FilmIntro from "./components/FilmIntro";
+import Hero from "./components/Hero";
+import ParticlesBg from "./components/ParticlesBg";
+import MemoryCards from "./components/MemoryCards";
+import Timeline from "./components/Timeline";
+import Slideshow from "./components/Slideshow";
 import { useRef, useState } from "react";
 import { FaPlay, FaPause } from "react-icons/fa";
-import Timeline from "../Timeline";
 
 export default function Kiss() {
 
@@ -20,6 +20,7 @@ export default function Kiss() {
 
   return (
     <div className="bg-black overflow-x-hidden">
+
       <ParticlesBg />
       <FilmIntro />
       <Hero />

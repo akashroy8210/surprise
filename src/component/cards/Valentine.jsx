@@ -1,209 +1,197 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import loveSong from "../../assets/kanomebali.mp3";
 
 function Valentine(){
 
-const [zoom,setZoom] = useState(false);
 const [open,setOpen] = useState(false);
-
 const audioRef = useRef(null);
+const fadeRef = useRef(null);
 
+/* ---------------- SAFE MUSIC FADE ---------------- */
 
-// soft music fade
-const playMusic = ()=>{
+const playMusic = async ()=>{
 
-audioRef.current.volume = 0;
-audioRef.current.play();
+ if(!audioRef.current) return;
 
-let vol = 0;
-
-const fade = setInterval(()=>{
-
- if(vol < 0.35){
-   vol += 0.02;
-   audioRef.current.volume = vol;
- }else{
-   clearInterval(fade);
+ try{
+   await audioRef.current.play();
+ }catch{
+   return; // browser blocked — ignore safely
  }
 
-},200);
+ audioRef.current.volume = 0;
+
+ let vol = 0;
+
+ fadeRef.current = setInterval(()=>{
+
+   if(vol < 0.35){
+     vol += 0.02;
+     audioRef.current.volume = vol;
+   }else{
+     clearInterval(fadeRef.current);
+   }
+
+ },120);
 
 };
 
-
+/* ---------------- OPEN SCENE ---------------- */
 
 const openValentine = ()=>{
 
-playMusic();
-setZoom(true);
-
-setTimeout(()=>{
-setOpen(true);
-},1000);
+ playMusic();
+ setOpen(true);
 
 };
 
+/* ---------------- STABLE PARTICLES ---------------- */
 
+const particles = useMemo(()=>{
 
-const particles = Array.from({length:22});
+ return Array.from({length:18}).map(()=>({
+   left:`${Math.random()*100}%`,
+   top:`${Math.random()*100}%`,
+   size:`${6+Math.random()*10}px`,
+   duration:`${6+Math.random()*6}s`
+ }));
+
+},[]);
+
 
 return(
 
-<div className="
-relative h-screen
-flex items-center justify-center
-overflow-hidden
-bg-[#0b070a]
-text-white
-">
+<div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#070508] text-white">
 
 <audio ref={audioRef} src={loveSong} loop />
 
+{/* 🌸 CINEMATIC GLOW */}
+<div className="absolute w-[500px] h-[500px] bg-pink-500/20 blur-[160px] rounded-full animate-pulse"/>
+<div className="absolute w-[350px] h-[350px] bg-rose-400/20 blur-[140px] rounded-full top-[10%] left-[70%]"/>
 
-{/* CINEMATIC LIGHT */}
+{/* 🎬 FILM GRAIN */}
+<div
+ className="absolute inset-0 opacity-[0.035] mix-blend-overlay pointer-events-none"
+ style={{
+   backgroundImage:"url('https://grainy-gradients.vercel.app/noise.svg')",
+ }}
+/>
 
-<div className="
-absolute
-w-250
-h-250
-bg-pink-500/20
-blur-[180px]
-rounded-full
-opacity-60
-animate-cinematicGlow
-"/>
-
-<div className="
-absolute
-w-150
-h-150
-bg-rose-400/20
-blur-[160px]
-rounded-full
-top-[10%]
-left-[70%]
-animate-cinematicGlow
-"/>
-
-
-
-{/* FLOATING LIGHT PARTICLES */}
-
+{/* ✨ FLOATING PARTICLES */}
 {
-particles.map((_,i)=>(
-<span
-key={i}
-className="absolute text-pink-200 animate-sparkle"
-style={{
-left:`${Math.random()*100}%`,
-fontSize:`${8+Math.random()*10}px`,
-animationDuration:`${6+Math.random()*8}s`
-}}
+particles.map((p,i)=>(
+<motion.span
+ key={i}
+ className="absolute text-pink-200"
+ style={{
+   left:p.left,
+   top:p.top,
+   fontSize:p.size
+ }}
+ animate={{y:[0,-30,0],opacity:[0,1,0]}}
+ transition={{duration:8,repeat:Infinity,delay:i*.3}}
 >
 ✦
-</span>
+</motion.span>
 ))
 }
 
+{/* 🎬 CINEMATIC TRANSITION */}
+<AnimatePresence mode="wait">
 
+{!open ? (
 
-{/* INITIAL SCENE */}
+<motion.div
+ key="intro"
+ initial={{opacity:0,scale:.96}}
+ animate={{opacity:1,scale:1}}
+ exit={{opacity:0,scale:1.05}}
+ transition={{duration:1.4}}
+ className="text-center px-6"
+>
 
-{!open && (
-
-<div className="text-center">
-
-<h1 className="
-text-6xl
-md:text-7xl
-font-serif
-mb-10
-max-w-3xl
-mx-auto
-animate-rise
-">
+<motion.h1
+ initial={{y:80,opacity:0}}
+ animate={{y:0,opacity:1}}
+ transition={{duration:1.2}}
+ className="text-5xl md:text-7xl font-serif mb-12 max-w-3xl mx-auto leading-tight"
+>
 In all the noise of the world…  
 I still found you.
-</h1>
+</motion.h1>
 
 
-<button
-onClick={openValentine}
-className={`
-px-10 py-4
-rounded-full
-bg-linear-to-r
-from-pink-400
-to-rose-400
-text-black
-font-semibold
-transition
-duration-500
-hover:scale-110
-hover:shadow-[0_20px_70px_rgba(255,105,180,.6)]
-${zoom ? "animate-valentineZoom":""}
-`}
+<motion.button
+ onClick={openValentine}
+ whileHover={{scale:1.08}}
+ whileTap={{scale:.95}}
+ className="
+ px-10 py-4
+ rounded-full
+ bg-gradient-to-r
+ from-pink-400
+ to-rose-400
+ text-black
+ font-semibold
+ shadow-[0_20px_60px_rgba(255,105,180,.45)]
+"
 >
 Open Your Valentine ❤️
-</button>
+</motion.button>
 
-</div>
+</motion.div>
 
-)
-}
+) : (
 
+<motion.div
+ key="final"
+ initial={{opacity:0,filter:"blur(10px)"}}
+ animate={{opacity:1,filter:"blur(0px)"}}
+ transition={{duration:1.6}}
+ className="text-center max-w-2xl px-6"
+>
 
-
-{/* FINAL MESSAGE */}
-
-{open && (
-
-<div className="
-text-center
-max-w-2xl
-px-6
-animate-rise
-">
-
-<h1 className="
-text-7xl
-font-serif
-mb-6
-">
+<motion.h1
+ initial={{y:60,opacity:0}}
+ animate={{y:0,opacity:1}}
+ transition={{duration:1}}
+ className="text-6xl md:text-7xl font-serif mb-6"
+>
 Happy Valentine’s Day ❤️
-</h1>
+</motion.h1>
 
-<p className="
-text-xl
-leading-relaxed
-text-pink-100
-">
+<motion.p
+ initial={{opacity:0}}
+ animate={{opacity:1}}
+ transition={{delay:.6,duration:1.2}}
+ className="text-xl leading-relaxed text-pink-100"
+>
 If I could give you one thing,  
 it would be the ability to see yourself  
 through my eyes…
 
 Only then would you realize  
 how incredibly special you are.
-</p>
+</motion.p>
 
-
-<div className="
-mt-10
-text-2xl
-italic
-text-pink-200
-">
+<motion.div
+ initial={{opacity:0}}
+ animate={{opacity:1}}
+ transition={{delay:1.2}}
+ className="mt-10 text-2xl italic text-pink-200"
+>
 — Yours, always
-</div>
+</motion.div>
 
-</div>
+</motion.div>
 
-)
-}
+)}
+
+</AnimatePresence>
 
 </div>
 );
 }
 
 export default Valentine;
-
