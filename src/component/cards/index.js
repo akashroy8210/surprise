@@ -7,6 +7,10 @@ import Propose from './Propose'
 import Rose from './Rose'
 import Teddy from './Teddy'
 import Valentine from './Valentine'
+<<<<<<< HEAD
+=======
+import Kiss from './Rose'
+>>>>>>> c3f1d3201ecc146831e34839a332fc4ca5d5cebc
 export {
   Choclate,
   Hug,
