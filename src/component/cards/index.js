@@ -4,9 +4,9 @@ import Kiss from './Kiss'
 import Love from './Love'
 import Promise from './Promise'
 import Propose from './Propose'
+import Rose from './Rose'
 import Teddy from './Teddy'
 import Valentine from './Valentine'
-
 export {
   Choclate,
   Hug,
@@ -15,5 +15,6 @@ export {
   Promise,
   Propose,
   Teddy,
-  Valentine
+  Valentine,
+  Rose
 }

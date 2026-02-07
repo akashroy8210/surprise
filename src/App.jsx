@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Teddy, Choclate, Love, Promise, Valentine, Hug, Kiss, Propose } from './component/cards'
 import GlobalEffects from './component/GlobalEffects'
 import MusicPlayer from "./component/MusicPlayer";
+import ValentineWeek from "./component/ValentineWeek";
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
     <GlobalEffects>
       <MusicPlayer />
     <Routes>
+
        <Route path="/" element={<LandingPage />} />
+<Route path="/valentine-week" element={<ValentineWeek />} />
 
         <Route path="/promise" element={<Promise />} />
         <Route path="/valentine" element={<Valentine />} />
