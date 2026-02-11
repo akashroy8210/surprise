@@ -175,11 +175,7 @@ text-[#3b2f2f]
 ">
 
 I promise you babu hum gussa nahi karenge agar kuch hota hia bhi to hum aapko samjhane ki koshish karenge pehle,  
-I will support you every time what you want to do,
-I want to be your strength agar lage ki disturb karte hia to aap mujhe bata dena, I will always be there for you, I promise to make you smile every day, I promise to love you unconditionally, I promise to be your best friend, I promise to grow old with you, I promise to cherish every moment with you, I promise to be honest and faithful, I promise to respect you and your dreams, I promise to be patient and understanding, I promise to make our love stronger every day.
 
-Not a perfect promise —  
-just a real one.
 
 </p>
 
@@ -194,7 +190,11 @@ rounded-2xl
 italic
 text-[#5c4444]
 ">
-✨ Write your personal promise here...
+✨ I will support you every time what you want to do,
+I want to be your strength agar lage ki disturb karte hia to aap mujhe bata dena, I will always be there for you, I promise to make you smile every day, I promise to love you unconditionally, I promise to be your best friend, I promise to grow old with you, I promise to make our love stronger every day.
+
+Not a perfect promise —  
+just a real one.
 </div>
 
 
